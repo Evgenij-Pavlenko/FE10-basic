@@ -5,11 +5,11 @@ function showUsersTable(persons = [], parameter = sortedByAgeUp) {
     //выбор варианта сортировки в зависимости от parameter
     switch (parameter) {
         //сортировка по имени
-        case sortedByName:
+        case sortedByLastName:
             console.log("po imeni");
             parameter = persons.sort(function (a, b) {
-                if (a.name < b.name) return -1;
-                if (a.name > b.name) return 1;
+                if (a.lastName < b.lastName) return -1;
+                if (a.lastName > b.lastName) return 1;
                 return 0;
             });
             break;
@@ -41,8 +41,8 @@ function showUsersTable(persons = [], parameter = sortedByAgeUp) {
     let averageAge = 0;
     let innerHtmlTableBody = '';
     for (let i = 0; i < persons.length; i++) {
-        innerHtmlTableBody += '<tr><td>' + parameter[i].name + '</td><td>' + parameter[i].age + '</td></tr>';
-        console.log('Person ' + (i + 1) + ': name = ' + parameter[i].name + ' age = ' + parameter[i].age);
+        innerHtmlTableBody += '<tr><td>' + parameter[i].lastName + '</td><td>' + parameter[i].firstName + '</td><td>' + parameter[i].age + '</td></tr>';
+        console.log('Person ' + (i + 1) + ': lastName = ' + parameter[i].lastName + ': firstName = ' + parameter[i].firstName + ' age = ' + parameter[i].age);
         averageAge += + parameter[i].age;
     }
     averageAge /= persons.length;
@@ -61,7 +61,8 @@ console.log(personsNumber);
 for (let i = 0; i < personsNumber; i++) {
     setTimeout(function () {
         const person = {};
-        person.name = prompt('Please enter name of the ' + (i + 1) + ' person');
+        person.lastName = prompt('Please enter last name of the ' + (i + 1) + ' person');
+        person.firstName = prompt('Please enter first name of the ' + (i + 1) + ' person');
         person.age = prompt('Please enter age of the ' + (i + 1) + 'person');
         persons[i] = person;
 
