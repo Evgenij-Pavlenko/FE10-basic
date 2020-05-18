@@ -39,18 +39,27 @@ function showUsersTable(persons = [], parameter = sortedByAgeUp) {
     }
 
     let averageAge = 0;
+    let maxAge = 0;
+    let minAge = 0;
     let innerHtmlTableBody = '';
     for (let i = 0; i < persons.length; i++) {
         innerHtmlTableBody += '<tr><td>' + parameter[i].lastName + '</td><td>' + parameter[i].firstName + '</td><td>' + parameter[i].age + '</td></tr>';
         console.log('Person ' + (i + 1) + ': lastName = ' + parameter[i].lastName + ': firstName = ' + parameter[i].firstName + ' age = ' + parameter[i].age);
         averageAge += + parameter[i].age;
+
+        if (maxAge < parameter[i].age) {
+            maxAge = parameter[i].age;
+        }
+        if (minAge == 0 || minAge > parameter[i].age) {
+            minAge = parameter[i].age;
+        }
     }
-    averageAge /= persons.length;
+    averageAge /= +persons.length;
 
     document.getElementsByTagName('tbody')[0].innerHTML = innerHtmlTableBody;
 
-    console.log('Average age of person:' + averageAge);
-    document.querySelector('tfoot div.alert').innerHTML = 'Average age: ' + averageAge;
+    console.log('Average age of person:' + averageAge + ', max age: ' + maxAge + ', min age: ' + minAge);
+    document.querySelector('tfoot div.alert').innerHTML = 'Average age: <b>' + averageAge + '</b>, max age: <b>' + maxAge + '</b>, min age: <b>' + minAge + '</b>';
 }
 
 let persons = [];
