@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW 2020-05-04</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="script.js" defer async></script>
+    <script src="js/script.js" defer async></script>
 </head>
 <body>
     <div class="container">
-        <div>Hello, world!</div>
+            <label><b>Sorted:</b></label>
+            <!--Кнопки сортируют по различным параметрам-->
+            <div class="button-group">
+                <!-- ?? после нажатия на любую кнопку: все поля - undefined -->
+                <!--Решено!! второй параметр нужно писать без кавычек или без this.id-->
+                <!--первый параметр (persons) нужен, чтобы не создавать отдельный метод для сортировки, а использовать общий-->
+                <button type="button" class="btn btn-primary" id="sortedByName" onclick="showUsersTable(persons, sortedByName)">
+                    by Name</button>
+                <button type="button" class="btn btn-primary" id="sortedByAgeUp" onclick="showUsersTable(persons, sortedByAgeUp)">
+                    by Age UP</button>
+                <button type="button" class="btn btn-primary" id="sortedByAgeDown" onclick="showUsersTable(persons, sortedByAgeDown)">
+                    by Age DOWN</button>
+            </div>
         <table class="table">
             <thead>
                 <tr>
