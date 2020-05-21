@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="script.js" defer async></script>
 </head>
+
 <body>
     <div class="container">
-        <div>Hello, world!</div>
+        <form action="">
+            <div class="form-group">
+                <label for="">User name</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="">User age</label>
+                <input type="text" class="form-control" name="age">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div> </div>
         <table class="table">
             <thead>
                 <tr>
@@ -19,8 +32,15 @@
             </thead>
             <tbody>
             </tbody>
-            <tfoot><tr><td><div class="alert alert-primary" role="alert"></div></td></tr></tfoot>
+            <tfoot>
+                <tr>
+                    <td>
+                        <div class="alert alert-primary" role="alert"></div>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </body>
+
 </html>
