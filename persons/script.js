@@ -8,11 +8,11 @@ function showUsersTable(persons = []) {
     let maxAge = persons[0].age;
     let innerHtmlTableBody = '';
     for (let i = 0; i < persons.length; i++) {
-        innerHtmlTableBody += '<tr><td>' + sortedPersons[i].name + '</td><td>' + sortedPersons[i].age + '</td></tr>';
+        innerHtmlTableBody += '<tr><td>' + sortedPersons[i].name + '</td><td>' + sortedPersons[i].age + '</td><td>' + sortedPersons[i].city + '</td></tr>';
         averageAge += + sortedPersons[i].age;
         if (persons[i].age > maxAge)
             maxAge = persons[i].age;
-        if (persons[i].age < minAge) 
+        if (persons[i].age < minAge)
             minAge = persons[i].age;
     }
     averageAge /= persons.length;
@@ -27,9 +27,11 @@ const form$ = document.getElementsByTagName('form')[0];
 form$.addEventListener('submit', function(event) {
     event.preventDefault();
 
+// Должны ли input в форме очищаться после нажатия на Submit?
     let person = {};
     person.name = document.querySelector('input[name=name]').value;
     person.age = document.querySelector('input[name=age]').value;
+    person.city = document.querySelector('input[name=city]').value;
 
     persons.push(person);
 
