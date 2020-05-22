@@ -19,6 +19,7 @@ function showUsersTable(persons = []) {
 }
 
 let persons = [];
+// отвечает за направление сортировки age - по возрастанию или убыванию
 let ageSort = true;
 
 const form$ = document.getElementsByTagName('form')[0];
@@ -31,7 +32,7 @@ form$.addEventListener('submit', function (event) {
     person.city = document.querySelector('input[name=city]').value;
 
     persons.push(person);
-    // Должны ли input в форме очищаться после нажатия на Submit?
+    // очистка полей ввода формы после нажатия на Submit?
     document.querySelector('input[name=name]').value = null;
     document.querySelector('input[name=age]').value = null;
     document.querySelector('input[name=city]').value = null;
@@ -39,9 +40,7 @@ form$.addEventListener('submit', function (event) {
     showUsersTable(persons);
 })
 // -------------------Сортировка по возрасту туда-сюда----------------------------
-// const th$ = document.getElementsByName('th[name=age]');  //** не работает. Как-то не так передаю параметр элемента по NAME? */
 const th$ = document.getElementById('age');     //работает
-// age.addEventListener('click', function (event) {   //тоже работает
 th$.addEventListener('click', function (event) {
     event.preventDefault();
 
