@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback-form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="script.js" defer async></script>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name">
+                <small id="nameHelp" class="form-text text-muted">Enter your name</small>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email">
+                <small id="emailHelp" class="form-text text-muted">Enter your email</small>
+            </div>
+            <div class="form-group">
+                <label>Feedback text</label>
+                <textarea class="form-control" name="feedback"></textarea>
+                <small id="feedbackHelp" class="form-text text-muted">Enter your feedback</small> <!--положительных и отрицательных ))-->
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="label" id="count"></div>  <!--сколько строк - сюда-->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Num.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Feedback</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
