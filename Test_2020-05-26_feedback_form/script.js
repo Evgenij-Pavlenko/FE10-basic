@@ -8,6 +8,7 @@ function showFeedbacksTable(feedbacks = []) {
 
     }
     document.getElementsByTagName('tbody')[0].innerHTML = innerHtmlTableBody;
+    document.getElementById('count').style.display = "block";
     document.querySelector('tfoot div.alert').innerHTML = 'Total number of records: <b>' + feedbacks.length + '</b>';
 
 
@@ -32,7 +33,7 @@ form$.addEventListener('submit', function (event) {
     feedback.feedback = document.querySelector('textarea[name=feedback]').value;
     feedback.currentDate = date;
 
-        feedbacks.push(feedback);
+    feedbacks.push(feedback);
 
     showFeedbacksTable(feedbacks);
 })
