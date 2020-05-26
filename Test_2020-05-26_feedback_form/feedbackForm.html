@@ -25,11 +25,13 @@
             <div class="form-group">
                 <label>Feedback text</label>
                 <textarea class="form-control" name="feedback"></textarea>
-                <small id="feedbackHelp" class="form-text text-muted">Enter your feedback</small> <!--положительных и отрицательных ))-->
+                <small id="feedbackHelp" class="form-text text-muted">Enter your pozitive feedback</small>
+
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <div class="label" id="count"></div>  <!--сколько строк - сюда-->
+        <div class="label" id="count"></div>
+        <!--сколько строк - сюда-->
         <table class="table">
             <thead>
                 <tr>
@@ -42,6 +44,13 @@
             </thead>
             <tbody>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <div class="alert alert-primary" role="alert"></div>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 

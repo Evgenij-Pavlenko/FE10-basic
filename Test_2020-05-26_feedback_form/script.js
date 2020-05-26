@@ -1,31 +1,38 @@
-function showUsersTable(persons = []) {
+function showFeedbacksTable(feedbacks = []) {
 
     let innerHtmlTableBody = '';
 
-    for (let i = 0; i < persons.length; i++) {
-        innerHtmlTableBody += '<tr><td>' + (i + 1) + '</td><td>' + persons[i].name + '</td><td>' + persons[i].email
-            + '</td><td>' + persons[i].feedback + '</td><td>' + persons[i].currentDate + '</td></tr>';
+    for (let i = 0; i < feedbacks.length; i++) {
+        innerHtmlTableBody += '<tr><td>' + (i + 1) + '</td><td>' + feedbacks[i].name + '</td><td>' + feedbacks[i].email
+            + '</td><td>' + feedbacks[i].feedback + '</td><td>' + feedbacks[i].currentDate + '</td></tr>';
 
     }
-    document.getElementById('count').innerHTML = "Total number of records: " + persons.length;
     document.getElementsByTagName('tbody')[0].innerHTML = innerHtmlTableBody;
+    document.querySelector('tfoot div.alert').innerHTML = 'Total number of records: <b>' + feedbacks.length + '</b>';
 
 
 }
 
-let persons = [];
+let feedbacks = [];
 
 const form$ = document.getElementsByTagName('form')[0];
 form$.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    let person = {};
-    person.name = document.querySelector('input[name=name]').value;
-    person.email = document.querySelector('input[name=email]').value;
-    person.feedback = document.querySelector('textarea[name=feedback]').value;
-    person.currentDate =
+    let date = new Date();
+    let dd = String(date.getDate()).padStart(2, '0');
+    let mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = date.getFullYear();
 
-        persons.push(person);
+    date = dd + '.' + mm + '.' + yyyy;
 
-    showUsersTable(persons);
+    let feedback = {};
+    feedback.name = document.querySelector('input[name=name]').value;
+    feedback.email = document.querySelector('input[name=email]').value;
+    feedback.feedback = document.querySelector('textarea[name=feedback]').value;
+    feedback.currentDate = date;
+
+        feedbacks.push(feedback);
+
+    showFeedbacksTable(feedbacks);
 })
