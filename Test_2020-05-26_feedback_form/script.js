@@ -8,8 +8,10 @@ function showFeedbacksTable(feedbacks = []) {
 
     }
     document.getElementsByTagName('tbody')[0].innerHTML = innerHtmlTableBody;
-    document.getElementById('count').style.display = "block";
-    document.querySelector('tfoot div.alert').innerHTML = 'Total number of records: <b>' + feedbacks.length + '</b>';
+    // document.getElementById('count').style.display = "block";
+    let $tfoot = document.querySelector('tfoot div.alert');
+    $tfoot.style.display="block";
+    $tfoot.innerHTML = 'Total number of records: <b>' + feedbacks.length + '</b>';
 
 
 }
