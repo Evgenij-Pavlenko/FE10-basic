@@ -40,96 +40,73 @@ form$.addEventListener('submit', function (event) {
     showFeedbacksTable(feedbacks);
 })
 
-let sortName = true;
-let sortEmail = true;
-let sortDate = true;
-let sortFb = true;
-let sortedFeedback;
+let sortTrueFalse = true;
 // ----------------------Sort by name----------------------
 const $name = document.getElementById('name');
 $name.addEventListener('click', function (event) {
     event.preventDefault();
-    if (sortName) {
-        console.log("sortName= true " + sortName);
-        sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
-            return 0;
-        });
-    } else {
-        console.log("sortName= false " + sortName);
-        sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.name < b.name) return 1;
-            if (a.name > b.name) return -1;
-            return 0;
-        });
-    }
-    sortName = !sortName;
-    showFeedbacksTable(feedbacks);
+    sortall('name'); // name передает
 });
+
 // ----------------------Sort by Email----------------------
+
 const $email = document.getElementById('email');
 $email.addEventListener('click', function (event) {
     event.preventDefault();
-    if (sortEmail) {
-        console.log("sortemail= true " + sortEmail);
-        sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.email > b.email) return 1;
-            if (a.email < b.email) return -1;
-            return 0;
-        });
-    } else {
-        console.log("sortEmail= false " + sortEmail);
-        sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.email < b.email) return 1;
-            if (a.email > b.email) return -1;
-            return 0;
-        });
-    }
-    sortEmail = !sortEmail;
-    showFeedbacksTable(feedbacks);
+    sortall('email');
 });
+
 // ----------------------Sort by Feedback----------------------
 const $feedback = document.getElementById('feedback');
 $feedback.addEventListener('click', function (event) {
     event.preventDefault();
-    if (sortFb) {
-        console.log("sortFeedback= true " + sortFb);
-        sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.feedback > b.feedback) return 1;
-            if (a.feedback < b.feedback) return -1;
-            return 0;
-        });
-    } else {
-        console.log("sortFeedback= false " + sortFb);
-        sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.feedback < b.feedback) return 1;
-            if (a.feedback > b.feedback) return -1;
-            return 0;
-        });
-    }
-    sortFb = !sortFb;
-    showFeedbacksTable(feedbacks);
+    sortall('feedback');
 });
+
 // ----------------------Sort by Date----------------------
 const $date = document.getElementById('date');
 $date.addEventListener('click', function (event) {
     event.preventDefault();
-    if (sortDate) {
-        console.log("sortDate= true " + sortDate);
+    sortall('date');
+});
+
+//----------------Обобщенный вариант--------------------
+function sortall(param) {
+    console.log(param);
+    //в зависимости от переданного параметра - сортирует по указанному полю
+    switch (param) {
+        case name:
+            param = 0;
+            break;
+        case email:
+            param = 1;
+            break;
+        case feedback:
+            param = 2;
+            break;
+        case date:
+            param = 3;
+            break;
+        default: // почему это в любом случае выводится в консоль?
+            console.log("error");
+            break;
+    }
+
+    if (sortTrueFalse) {
+        console.log("sortTrueFalse= true " + sortTrueFalse);
         sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.currentDate > b.currentDate) return 1;
-            if (a.currentDate < b.currentDate) return -1;
+            if (a[param] > b[param]) return 1;
+            if (a[param] < b[param]) return -1;
             return 0;
         });
     } else {
-        console.log("sortDate= false " + sortDate);
+        console.log("sortTrueFalse= false " + sortTrueFalse);
         sortedFeedback = feedbacks.sort(function (a, b) {
-            if (a.currentDate < b.currentDate) return 1;
-            if (a.currentDate > b.currentDate) return -1;
+            if (a[param] < b[param]) return 1;
+            if (a[param] > b[param]) return -1;
             return 0;
         });
     }
-    sortDate = !sortDate;
+    sortTrueFalse = !sortTrueFalse;
     showFeedbacksTable(feedbacks);
-});
+}
