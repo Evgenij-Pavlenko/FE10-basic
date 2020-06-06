@@ -4,7 +4,7 @@ let data = [
         name: 'Vasya',
         email: 'vasja@dc.com',
         feedback: 'vasjafhfhfhfh fhfhff',
-        date: new Date(2020,1,20+2).toLocaleString()
+        date: new Date(2020, 1, 20 + 2).toLocaleString()
 
     },
     {
@@ -19,7 +19,7 @@ let data = [
         name: 'Petya',
         email: 'petja@eded.com',
         feedback: 'petjasxsxsxd',
-        date: new Date(2020,1,20).toLocaleString()
+        date: new Date(2020, 1, 20).toLocaleString()
     },
 ];
 
@@ -60,13 +60,17 @@ function renderFeedbackTable(data) {
 
     document.querySelector('table tbody').innerHTML = tbody;
 }
-
 function sort(param) {
     let sortedData = [...data];
     console.log(param)
-
+    const valueTHeader =  document.getElementById([param]).innerHTML;// не понимаю, как неизменять этот элемент, чтобы не добавлялось миллион стрелочек
+    // с изменением свойства ::after -  былобы проще, т.к. основной элемент не меняется
+    //получилось только, когда id = с большой буквы
+    let $up = valueTHeader + '&uArr;';
+    let $down = valueTHeader + '&dArr;';
     if (sortedBy === 0) {
         sortedData.sort((a, b) => {
+            document.getElementById(param).innerHTML =  $up; //arrow up //in ::after => '--content' - don't worked((
             if (a[param] > b[param]) return 1;
             if (a[param] < b[param]) return -1;
             return 0;
@@ -74,12 +78,16 @@ function sort(param) {
         sortedBy = 1;
     } else if (sortedBy === 1) {
         sortedData.sort((a, b) => {
+            document.getElementById(param).innerHTML = $down; // Arrow down ' &dArr; '
             if (a[param] > b[param]) return -1;
             if (a[param] < b[param]) return 1;
             return 0;
         });
         sortedBy = -1;
     } else {
+        //обнуляет название колонки.
+        //работает, но похоже на говнокод(
+        document.getElementById(param).innerHTML = param;
         sortedBy = 0;
     }
 
