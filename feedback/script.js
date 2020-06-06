@@ -1,25 +1,35 @@
 let data = [
     {
-      id: 1,  
-      name: 'Vasya'  
+        id: 1,
+        name: 'Vasya',
+        email: 'vasja@dc.com',
+        feedback: 'vasjafhfhfhfh fhfhff',
+        date: new Date(2020,1,20+2).toLocaleString()
+
     },
     {
-      id: 2,
-      name: 'John'
+        id: 2,
+        name: 'John',
+        email: 'john@fvfv.com',
+        feedback: 'johndccdcdc cdcc cdccd',
+        date: new Date().toLocaleString()
     },
     {
-      id: 3,
-      name: 'Petya'
+        id: 3,
+        name: 'Petya',
+        email: 'petja@eded.com',
+        feedback: 'petjasxsxsxd',
+        date: new Date(2020,1,20).toLocaleString()
     },
 ];
 
 renderFeedbackTable(data);
 
-let sortedByName = 0; // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
+let sortedBy = 0; // state: 0 - not sorted, 1 - sorted ASC, -1 sorted DSC;
 
 document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
-    
+
     let feedback = {};
 
     // Extract data from form
@@ -51,28 +61,30 @@ function renderFeedbackTable(data) {
     document.querySelector('table tbody').innerHTML = tbody;
 }
 
-function sort() {
+function sort(param) {
     let sortedData = [...data];
-    if (sortedByName === 0) {
+    console.log(param)
+
+    if (sortedBy === 0) {
         sortedData.sort((a, b) => {
-            if (a['name'] > b['name']) return 1;
-            if (a['name'] < b['name']) return -1;
+            if (a[param] > b[param]) return 1;
+            if (a[param] < b[param]) return -1;
             return 0;
         });
-        sortedByName = 1;
-    } else if (sortedByName === 1) {
+        sortedBy = 1;
+    } else if (sortedBy === 1) {
         sortedData.sort((a, b) => {
-            if (a['name'] > b['name']) return -1;
-            if (a['name'] < b['name']) return 1;
+            if (a[param] > b[param]) return -1;
+            if (a[param] < b[param]) return 1;
             return 0;
         });
-        sortedByName = -1;
+        sortedBy = -1;
     } else {
-        sortedByName = 0;
+        sortedBy = 0;
     }
 
     renderFeedbackTable(sortedData);
 }
 
- 
+
 
