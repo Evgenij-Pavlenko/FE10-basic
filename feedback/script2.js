@@ -1,18 +1,18 @@
 let data = [
     {
-      id: 1,
-      name: 'a',
-      email: 'c@gmail.com',
+        id: 1,
+        name: 'a',
+        email: 'c@gmail.com',
     },
     {
-      id: 2,
-      name: 'c',
-      email: 'a@gmail.com'
+        id: 2,
+        name: 'c',
+        email: 'a@gmail.com'
     },
     {
-      id: 3,
-      name: 'b',
-      email: 'b@gmail.com'
+        id: 3,
+        name: 'b',
+        email: 'b@gmail.com'
     },
 ];
 
@@ -49,15 +49,33 @@ document.querySelector('form').addEventListener('submit', event => {
 })
 
 function renderFeedbackTable(data) {
+    // let nodesList = document.querySelectorAll('th');
+    // for (let i = 0; i < nodesList.length; i++) {
+    //     nodesList[i].classList.remove('arrow_down');
+    //     nodesList[i].classList.remove('arrow_up');
+    // }
 
-    const arrows = {
-        '0': '',
-        '1': '\u2193',
-        '-1': '\u2191'
-    };
+    document.querySelectorAll('th').forEach((element => {
+        element.classList.remove('arrow_down');
+        element.classList.remove('arrow_up');
+    }));
 
-    if (sorted.field !== '') {
-        document.getElementById(sorted.field).innerHTML = sorted.fieldHeader + arrows[sorted.order];
+    const elements = document.querySelectorAll('th');
+    for (x in elements) {
+        console.log(x)
+    }
+
+    for (x of elements) {
+        console.log(x)
+    }
+
+    const classes = {
+        '1': 'arrow_down',
+        '-1': 'arrow_up'
+    }
+
+    if (sorted.order) {
+        document.getElementById(sorted.field).classList.add(classes[sorted.order]);
     }
 
     let tbody = '';
@@ -67,30 +85,34 @@ function renderFeedbackTable(data) {
 
     document.querySelector('table tbody').innerHTML = tbody;
 }
+const asc = (field) => {
+    return (a, b) => {
+        if (a[field] > b[field]) return 1;
+        if (a[field] < b[field]) return -1;
+        return 0;
+    }
+};
 
+const desc = (field) => {
+    return (a, b) => {
+        if (a[field] > b[field]) return -1;
+        if (a[field] < b[field]) return 1;
+        return 0;
+    }
+}
 function sort(field) {
     let sortedData = [...data];
 
-    if (sorted.field !== '' && field !== sorted.field) {
-        document.getElementById(sorted.field).innerHTML = sorted.fieldHeader;
+    if (sorted.field && field !== sorted.field) {
         sorted.order = 0;
     }
 
     sorted.field = field;
     if (sorted.order === 0) {
-        sorted.fieldHeader = document.getElementById(field).innerHTML;
-        sortedData.sort((a, b) => {
-            if (a[field] > b[field]) return 1;
-            if (a[field] < b[field]) return -1;
-            return 0;
-        });
+        sortedData.sort(acs);
         sorted.order = 1;
     } else if (sorted.order === 1) {
-        sortedData.sort((a, b) => {
-            if (a[field] > b[field]) return -1;
-            if (a[field] < b[field]) return 1;
-            return 0;
-        });
+        sortedData.sort(desc(field));
         sorted.order = -1;
     } else {
         sorted.order = 0;
@@ -99,6 +121,25 @@ function sort(field) {
     renderFeedbackTable(sortedData);
 }
 
-document.querySelector('#name').addEventListener('click', function() {
+document.querySelector('#name').addEventListener('click', function () {
     sort('name');
 })
+//тестовое задание - через функцию
+function funct(x) {
+    return (a) => {
+        return a * x;
+    };
+};
+//осознание...
+function funct(x) {
+    let abc = (a) => {
+        return a * x;
+    };
+    return abc;
+};
+//тестовое задание 2 - через переменную-функцию
+const funct2 = (x) => {
+    return (a) => {
+        return x = a * x;
+    };
+};
