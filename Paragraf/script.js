@@ -1,55 +1,50 @@
+//Arrays colors
 const colorsArr = ['red',
     'green',
     'blue'];
 
-const colors = {
-    1: 'red',
-    2: 'green',
-    3: 'blue'
-
+let color = { //for color=paragraf
+    'p1': 0,
+    'p2': 0,
+    'p3': 0,
+    i: '',  //conkret parametr
 }
-
-let color = { //для обозначения, какой цвет у какого параграфа
-    bColor: '',
-    paragraf: '', //id pafagraf or name
-    i:0 //проходит по объекту с цветами - хотел подвязать через отдельный объект
-}
-// let set {
-
-// }
-
-
-let i = 0; //проходит по объекту с цветами
 
 function changeColor(param) {
-    if(color === ''){
-       new color;
-
+    if (color === '') {
+        new color;
+    };
+    color.i = param;
+    if (color[color.i] > 2) { // change index (make 0) of Array-colors
+        color[color.i] = 0;
     }
-    if (color.i > 2) { // вышел за предела массива цветов
-        color.i = 0
-        console.log('colors[count]: ' + colorsArr[color.i])
-    }
-    color.paragraf = param;
-    color.bColor = colorsArr[color.i];
-    console.log('colors[count]: ' + colorsArr[color.i])
-    console.log('color.paragraf: ' + color.paragraf)
-    color.i++;
-    setBColor(color);
+    setBColor(color); // display in html
+    color[color.i]++; // change parametr paragraf-color(next) after display HTML
 }
 
 function setBColor(color) {
-    document.getElementById(color.paragraf).style.background = color.bColor;
+    document.getElementById(color.i).style.background = colorsArr[color[color.i]];
 
 }
+
 ///////////////////////////////////////////////////////////////////////////
 //Create function that returns of times it was called (if you call it 1 time - returns 1, 2 times - 2, etc.)
-let count1 = 0;
+function count(c = 0) {
+    return function () {
+        return ++c;  //first - displayed, second - incrementing
+    };
+}
 
-document.querySelector('p').addEventListener('click', function (event) { /// пока не работает (
-    event.preventDefault();
-    return function (count) {
-        count++;
-        console.log(count);
-    }
-});
+
+// Write a function that receives one parameter x and returns function which receives parameter a and returns
+// multiplication a * x for the first call, and previous returned value multiplied by a for the all consecutive calls
+// Example:
+// x = 3:
+// first call of generated function, a = 2, it returns 6
+// second call of generated function, a = 3, it returns 18
+// third call of generated function, a = 2, it returns 36
+const funct2 = (x) => {
+    return (a) => {
+        return x = a * x;
+    };
+};
