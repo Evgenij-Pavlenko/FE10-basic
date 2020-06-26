@@ -13,19 +13,38 @@ const color = ['white', 'red', 'green', 'blue'];
 //     })
 // })
 document.querySelectorAll('p').forEach(function (element) {
-    element.addEventListener('click', changeColor(element) )
+    element.addEventListener('click', changeColor(element))
 })
-function changeColor(param){
+function changeColor(param) {
     let currentColor = 0;
-        return () => {
-            currentColor++;
-            return param.style['background-color'] = color[currentColor % color.length];
+    return () => {
+        currentColor++;
+        return param.style['background-color'] = color[currentColor % color.length];
 
-            // this.style['background-color'] = color[++currentColor % color.length]; - или так - в одну строчку
-            // this.style.backgroundColor = 'red'; // auch richtig)
-        }
-
+        // this.style['background-color'] = color[++currentColor % color.length]; - или так - в одну строчку
+        // this.style.backgroundColor = 'red'; // auch richtig)
     }
 
+}
 
 
+
+
+/*
+var nodes = document.getElementsByTagName('button');
+for (var i = 0; i < nodes.length; i++) {
+nodes[i].addEventListener('click', function() {
+  console.log('You clicked element #' + i);
+});
+}
+Please fix the bug.
+*/
+let nodes = document.getElementsByTagName('button');
+for (let i = 0; i < nodes.length; i++) {
+
+    nodes[i].addEventListener('click', function (x) {
+        return function () {
+            console.log('You clicked element #' + x);
+        }
+        }(i))// вызывает функцию
+}
