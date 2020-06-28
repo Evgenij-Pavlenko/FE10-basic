@@ -6,9 +6,22 @@ Print number not to the console, but below the button.
 */
 
 let randomNum = document.querySelectorAll('button');
-randomNum
+let set = new Set;
 function random() {
-    return Math.floor(Math.random() * 101);
+    let randomNumber = 0;
+    let bool = false;
+    while(!bool){
+        randomNumber = Math.floor(Math.random() * 101);
+        if(!set.has(randomNumber)){
+            set.add(randomNumber)
+            bool = true;
+        }
+    }
+    if(set.length ==101){
+        console.log("Set randomNumber is full. Reset set")
+        set.clear();
+    }
+    return randomNumber;
 }
 
 let buttons = document.getElementsByTagName('button');
