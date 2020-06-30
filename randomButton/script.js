@@ -7,12 +7,12 @@ Print number not to the console, but below the button.
 */
 
 document.querySelectorAll('button').forEach(function(button) {
-    button.addEventListener('click', function() {
-        console.log(getRandomNonRepetitive());
-    })
+    button.addEventListener('click', getRandomNonRepetitive()
+        // console.log(getRandomNonRepetitive(i));
+    )
 });
 
-function getRandomNonRepetitive(i) {
+function getRandomNonRepetitive() {
     let numbers = {};
     return function() {
         if (Object.keys(numbers).length === 9)
@@ -23,6 +23,7 @@ function getRandomNonRepetitive(i) {
             number = getRndInteger(0, 10);
         }
         numbers[number] = true;
+        console.log(numbers);
         return number;
     }
 }
