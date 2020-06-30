@@ -8,21 +8,27 @@ Print number not to the console, but below the button.
 
 
 document.querySelectorAll('button').forEach(button => {
-    button.addEventListener('click', function () {
-       console.log(return getRandomNonRepetitive());
-    })
+    button.addEventListener('click', getEventListener(button))
 });
 
-function getRandomNonRepetitive() {
+function getEventListener(button) {
+    const getRandomNonRepetitiveNumber = getRandomNonRepetitiveNumberGenerator(0, 10);
+    return function () {
+        button.nextElementSibling.innerText = getRandomNonRepetitiveNumber();
+        console.log(getRandomNonRepetitiveNumber());
+    }
+}
+
+function getRandomNonRepetitiveNumberGenerator(min, max) {
     let numbers = {};
-    return function(){
-        if (Object.keys(numbers).length === 9) {
+    return function () {
+        if (Object.keys(numbers).length === max - min) {
             throw new Error('No numbers left...');
         }
-        let number = getRndInteger(0, 10);
+        let number = getRndInteger(min, max);
         while (numbers[number]) {
             console.log(numbers);
-            number = getRndInteger(0, 10);
+            number = getRndInteger(min, max);
         }
         numbers[number] = true;
         return number;
