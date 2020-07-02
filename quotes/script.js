@@ -21,14 +21,17 @@ let quotes = { //цитаты
 let sizeQuotes = Object.keys(quotes).length;
 
 let $button = document.querySelector('button');
+let $blockquote = document.querySelector('blockquote')
+let $cite = document.querySelector('cite');
+
 $button.addEventListener('click', getEventListener())
 
 function getEventListener() {
     const getRandomNonRepetitiveNumber = getRandomNonRepetitiveNumberGenerator(1, sizeQuotes);
     return function () {
         let num = getRandomNonRepetitiveNumber();
-        this.nextElementSibling.innerHTML = quotes[num][0];
-        this.nextElementSibling.nextElementSibling.innerHTML = quotes[num][1];
+        $blockquote.innerHTML = quotes[num][0];
+        $cite.innerHTML = quotes[num][1];
     }
 }
 
@@ -37,8 +40,8 @@ function getRandomNonRepetitiveNumberGenerator(min, sizeQuotes) {
     return function () {
         let number = getRndInteger(min, sizeQuotes);
         if (Object.keys(numbers).length === sizeQuotes){
-            $button.nextElementSibling.innerHTML = "THE END...";
-            $button.nextElementSibling.nextElementSibling.innerHTML = '';
+            $blockquote.innerHTML = "THE END...";
+            $cite.innerHTML = '';
             throw new Error('No numbers left...')
         }
         while (numbers[number]) {
