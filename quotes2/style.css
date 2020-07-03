@@ -1,0 +1,35 @@
+
+/*
+Под телефон - нужно создавать отдельные классы - чтобы уменьшить размер текста?
+*/
+
+.col-4 {
+    margin-left: 33%;
+    margin-right: 33%;
+    padding: 20px;
+   background-color: SaddleBrown;
+}
+
+.inline{
+    background-color: rosybrown;
+}
+
+blockquote{
+    text-indent: 1.5rem;
+    font-size: x-large;
+
+}
+
+cite{
+    font-size: larger;
+    color: seagreen;
+    text-align: right; /* почему не работает? */
+}
+button{
+    margin-left: 33%;
+    margin-right: 33%;
+    font-size: larger;
+
+    color: white;
+    background-color: teal;
+}
