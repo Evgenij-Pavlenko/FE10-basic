@@ -41,8 +41,7 @@ class Bill {
 with class
 */
 // 2. More complex option: calculate tips with no "Calculate" button, just after you change value in any of the fields.
-document.querySelectorAll('input').forEach(input=> input.addEventListener('input', function(event){
-    event.preventDefault();
+document.querySelectorAll('input').forEach(input=> input.addEventListener('input', function(){
     calculateSumWithClass();
 }))
 
