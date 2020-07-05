@@ -33,32 +33,39 @@ class Bill {
 with class
 */
 
-// document.querySelector('form').addEventListener('submit', function (event) {
-//     event.preventDefault();
-//     let bill = document.querySelectorAll('input')[0].value;
-//     let persent = document.querySelectorAll('input')[1].value;
-//     const sumOut = new Bill(bill, persent);
+document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    calculateSumWithClass();
+})
+function calculateSumWithClass(){
+    let bill = document.querySelectorAll('input')[0].value;
+    let persent = document.querySelectorAll('input')[1].value;
+    const sumOut = new Bill(bill, persent);
 
-//     document.querySelector('label[name=outSum]').innerHTML = sumOut.getSumBill();
-// })
+    document.querySelector('label[name=outSum]').innerHTML = sumOut.getSumBill();
+}
 
 /*
 without class
 */
 
-function calculate(bill, percent) {
-    if (bill != null) {
-        return +bill + +(bill * percent / 100);
-    } else {
-        return "Bill = null";
-    }
-};
+// function calculate(bill, percent) {
+//     if (bill != null) {
+//         return +bill + +(bill * percent / 100);
+//     } else {
+//         return "Bill = null";
+//     }
+// };
 
 
-document.querySelector('form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    let bill = document.querySelectorAll('input')[0].value;
-    let percent = document.querySelectorAll('input')[1].value;
-    document.querySelector('label[name=outSum]').innerHTML = calculate(bill, percent);
-})
+// document.querySelector('form').addEventListener('submit', function (event) {
+//     event.preventDefault();
+//     calculateSum();
+// })
 
+
+// function calculateSum(){
+//     let bill = document.querySelectorAll('input')[0].value;
+//     let percent = document.querySelectorAll('input')[1].value;
+//     document.querySelector('label[name=outSum]').innerHTML = calculate(bill, percent);
+// }
