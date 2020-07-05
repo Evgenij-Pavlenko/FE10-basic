@@ -1,3 +1,13 @@
+
+/*
+Write a JavaScript tips calculator.
+You have two field where you can enter
+
+a bill amount - in to the first,
+tips amount in percent - into the second.
+Calculate and show the tips below those two fields.
+*/
+
 class Bill {
     bill;
     persent;
@@ -5,9 +15,7 @@ class Bill {
     #sumBill;
 
     constructor(bill, persent) {
-        console.log(bill);
         this.bill = bill;
-        console.log(this.bill);
         this.persent = persent;
 
     }
@@ -32,7 +40,13 @@ class Bill {
 /*
 with class
 */
+// 2. More complex option: calculate tips with no "Calculate" button, just after you change value in any of the fields.
+document.querySelectorAll('input').forEach(input=> input.addEventListener('input', function(event){
+    event.preventDefault();
+    calculateSumWithClass();
+}))
 
+// 1. After you press button "Calculate".
 document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault();
     calculateSumWithClass();
