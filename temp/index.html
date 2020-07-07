@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Weather</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="script.js" defer></script>
+</head>
+
+<body class="container">
+    <div class="form-group">
+        <label>Contry</label>
+        <input type="text" class="form-control" name="country">
+        <small class="form-text text-muted">Please type contry</small>
+    </div>
+    <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" name="city">
+        <small class="form-text text-muted">Please type city</small>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="getWeather()">Get weather</button>
+    <div class="form-group">
+        <label>Weather data</label>
+        <div type="text" class="form-control" name='weather-data'></div>
+    </div>
+
+</body>
+
+</html>
