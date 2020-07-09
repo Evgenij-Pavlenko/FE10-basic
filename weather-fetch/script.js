@@ -20,7 +20,7 @@ function jsonAdapter(text) {  //не получилось вытянуть myJso
             .then(response => response.json())
             .then(json => showWeather(json, event.target));
     })
-
+}
     function showWeather(json, target) {
         const titleElement$ = target.nextElementSibling.querySelector('h5.card-title');
         titleElement$.innerText = `Weather for ${json.name}`;
@@ -34,4 +34,3 @@ function jsonAdapter(text) {  //не получилось вытянуть myJso
 
         titleElement$.nextElementSibling.innerHTML = html;
     }
-}
