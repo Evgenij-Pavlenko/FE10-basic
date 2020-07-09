@@ -1,46 +1,37 @@
-// const URL = 'http://api.openweathermap.org/data/2.5/weather';
-// const APPID = 'bed156d40174100c73406417523ddaf1';
 
-// const weatherFieldConig = [
-//     {name: 'Temperature', field: 'main.temp'},
-//     {name: 'Wind deg', field: 'wind.deg'},
-//     {name: 'Wind speed', field: 'wind.speed'}
-// ];
 const configJson = "./config.json";
-// const myJson; // Missing initializer in const declaration
 let myJson = {};
+
 fetch(configJson)
     .then(response => response.text())
-    .then(text => jsonAdapter(text)); //тут не попадает в myJson
+    .then(text => jsonAdapter(text));
 
 
-    function jsonAdapter(text){
-        myJson = JSON.parse(text);
-        // console.log(myJson); //тут выводит в консоль
-    };
-    console.log(myJson); //выводит "{}"
+function jsonAdapter(text) {  //не получилось вытянуть myJson наружу - приходится оставаться в этой функции
+    myJson = JSON.parse(text);
 
-document.querySelector('form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const country = event.target['country'].value;
-    const city = event.target['city'].value;
+    document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const country = event.target['country'].value;
+        const city = event.target['city'].value;
 
-    fetch(`${URL}?country=${country}&q=${city}&APPID=${APPID}`)
-        .then(response => response.json())
-        .then(json => showWeather(json, event.target));
-})
+        // units=metric - temp -> in Celsius
+        fetch(`${myJson.URL}?country=${country}&q=${city}&APPID=${myJson.APPID}&units=metric`)
+            .then(response => response.json())
+            .then(json => showWeather(json, event.target));
+    })
 
-function showWeather(json, target) {
-    console.log(json);
-    const titleElement$ = target.nextElementSibling.querySelector('h5.card-title');
-    titleElement$.innerText = `Weather for ${json.name}`;
+    function showWeather(json, target) {
+        const titleElement$ = target.nextElementSibling.querySelector('h5.card-title');
+        titleElement$.innerText = `Weather for ${json.name}`;
 
-    let html = '';
-    weatherFieldConig.forEach((el => {
-        html += '<div class="row">';
-        html += `<div class="col-6">${el.name}</div><div class="col-6">${eval('json.' + el.field)}</div>`
-        html += '</div>';
-    }))
+        let html = '';
+        myJson.weatherFieldConig.forEach((el => {
+            html += '<div class="row">';
+            html += `<div class="col-6">${el.name}</div><div class="col-6">${eval('json.' + el.field)}</div>`
+            html += '</div>';
+        }))
 
-    titleElement$.nextElementSibling.innerHTML = html;
+        titleElement$.nextElementSibling.innerHTML = html;
+    }
 }
