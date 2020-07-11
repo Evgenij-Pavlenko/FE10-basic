@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="css/style.css" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
+
 <body class="container">
     <form>
         <div class="form-group">
@@ -17,9 +19,39 @@
         </div>
         <div class="form-group">
             <label>City</label>
-            <input type="text" class="form-control" name="city">
+            <input type="text" class="form-control" name="city" value="Berlin">
             <small class="form-text text-muted">Please type the city</small>
         </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label>Units format:</label>
+            </div>
+            <div class="col-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unitsRadios" id="unitsRadios1" value="metric" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        <!-- ℃ -->
+                        Metric system ( &#8451; )
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unitsRadios" id="exampleRadios2" value="imperial">
+                    <label class="form-check-label" for="exampleRadios1">
+                        <!-- ℉  -->
+                        Imperial system ( &#8457; )
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unitsRadios" id="exampleRadios1"3 value="default">
+                    <label class="form-check-label" for="exampleRadios1">
+                        <!-- K -->
+                        Metric system ( K )
+                    </label>
+                </div>
+                <small class="form-text text-muted">Please type the units format</small>
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">Get weather</button>
     </form>
     <div class="card weather-result" style="width: 18rem;">
@@ -34,4 +66,5 @@
         </div>
     </div>
 </body>
+
 </html>
