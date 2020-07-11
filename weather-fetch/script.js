@@ -14,7 +14,7 @@ fetch('/weather-fetch/config.json')
             // const units = event.target['input[name="unitsRadios"]:checked'].value;
             // const units = event.target['unitsRadios:checked'].value;
 
-            fetch(`${config.URL}?country=${country}&q=${city}&APPID=${config.APPID}&units=${units1}`)
+            fetch(`${config.URL}?q=${city},${country}&APPID=${config.APPID}&units=${units1}`)
                 .then(response => response.json())
                 .then(json => showWeather(json, event.target, config, units1));
         })
