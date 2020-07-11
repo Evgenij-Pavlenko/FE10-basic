@@ -4,15 +4,30 @@
     "weatherFieldConig": [
         {
             "name": "Temperature",
-            "field": "main.temp"
+            "field": "main.temp",
+            "units":{
+                "metric": "&#8451;",
+                "imperial": "&#8457;",
+                "default": "K"
+            }
         },
         {
             "name": "Wind deg",
-            "field": "wind.deg"
+            "field": "wind.deg",
+            "units":{
+                "metric": "degrees",
+                "imperial": "degrees",
+                "default": "degrees"
+            }
         },
         {
             "name": "Wind speed",
-            "field": "wind.speed"
+            "field": "wind.speed",
+            "units":{
+                "metric": "m/sec",
+                "imperial": "mil/hour",
+                "default": "m/sec"
+            }
         }
     ]
 }
