@@ -5,7 +5,16 @@
         {
             "name": "Temperature",
             "field": "main.temp",
-            "units":{
+            "units": {
+                "metric": "&#8451;",
+                "imperial": "&#8457;",
+                "default": "K"
+            }
+        },
+        {
+            "name": "Temperature feels",
+            "field": "main.feels_like",
+            "units": {
                 "metric": "&#8451;",
                 "imperial": "&#8457;",
                 "default": "K"
@@ -14,7 +23,7 @@
         {
             "name": "Wind deg",
             "field": "wind.deg",
-            "units":{
+            "units": {
                 "metric": "degrees",
                 "imperial": "degrees",
                 "default": "degrees"
@@ -23,10 +32,28 @@
         {
             "name": "Wind speed",
             "field": "wind.speed",
-            "units":{
+            "units": {
                 "metric": "m/sec",
                 "imperial": "mil/hour",
                 "default": "m/sec"
+            }
+        },
+        {
+            "name": "Wind gust",
+            "field": "wind.gust",
+            "units": {
+                "metric": "m/sec",
+                "imperial": "mil/hour",
+                "default": "m/sec"
+            }
+        },
+        {
+            "name": "humidity",
+            "field": "main.humidity",
+            "units": {
+                "metric": "%",
+                "imperial": "%",
+                "default": "%"
             }
         }
     ]
