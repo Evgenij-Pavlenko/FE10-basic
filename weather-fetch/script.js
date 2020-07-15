@@ -36,7 +36,7 @@ function showWeather(json, target, config, units1) {
     let html = '';
     config.weatherFieldConig.forEach((el => {
         html += '<div class="row">';
-        html += `<div class="col-6">${el.name}</div><div class="col-6">${eval('json.' + el.field)}, ${eval('el.units.' + units1)}</div>`
+        html += `<div class="col-6">${el.name}</div><div class="col-6">${eval('json.' + el.field)} ${eval('el.units.' + units1)}</div>`
         html += '</div>';
     }))
 

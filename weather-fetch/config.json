@@ -48,12 +48,30 @@
             }
         },
         {
-            "name": "humidity",
+            "name": "Humidity",
             "field": "main.humidity",
             "units": {
                 "metric": "%",
                 "imperial": "%",
                 "default": "%"
+            }
+        },
+        {
+            "name": "Parameters ",
+            "field": "weather[0].main",
+            "units": {
+                "metric": "",
+                "imperial": "",
+                "default": ""
+            }
+        },
+        {
+            "name": "Description",
+            "field": "weather[0].description",
+            "units": {
+                "metric": "",
+                "imperial": "",
+                "default": ""
             }
         }
     ]
